@@ -1,11 +1,12 @@
 #include <iostream>
 #include <forward_list>
 #include <map>
+#include <vector>
 
-#include "dts/enumerate.h"
-#include "dts/basic.h"
+#include "enumerate.h"
+//#include "basic.h"
 
-int main() {
+int test() {
     // test routines
     std::vector<uint8_t> obj_test(5, 'A');
 
