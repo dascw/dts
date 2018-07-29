@@ -13,10 +13,10 @@
  * capability. In C++, this can be emulated through both std::tuple and std::pair. 
  * For the enumerate method, only two return values are required, index and value at index. 
  * 
- * enum_pair class is used to provide more description that  .first / .second.
+ * enum_pair class is used to provide descriptive members than (not .first / .second.)
  * 
  * @caveats effiency: current implementation is inefficient due to vector resizing. 
- *          overheads: this isn't intended to be used for large vector objects, as results,
+ *          overheads: this isn't intended to be used for large vector objects, as results
  *                  in additional memory allocations for vector<pair> objects.
  *
  * @supported containers: tested with {map, forward_list, vector}.
@@ -42,14 +42,14 @@ namespace dts {
     struct enum_pair final : private std::pair<_T1, _T2> {
         using _T1_t         = typename std::pair<_T1, _T2>::first_type;
         using _T2_t         = typename std::pair<_T1, _T2>::second_type;
-        using _T1_ref_t     = std::reference_wrapper<_T1_t>;
-        using _T2_ref_t     = std::reference_wrapper<_T2_t>;
+        using _T1_ref_t     = enum_type::_ref<_T1_t>;
+        using _T2_ref_t     = enum_type::_ref<_T2_t>;
 
         // @todo implement - copy ctors
 //        enum_pair(enum_pair<_T1, _T2>&& __in) {}
         enum_pair() = delete;
-        enum_pair(const enum_pair<_T1, _T2>& __in)  : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second)  { }
-        enum_pair(_T1 index_in, _T2 value_in)       : std::pair<_T1, _T2>(index_in, value_in), index(_T1_ref_t(this->first)), value(_T2_ref_t(this->second))    { }
+        enum_pair(const enum_pair<_T1, _T2>& __in)  : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second)      { }
+        enum_pair(_T1 __idx, _T2 __val)  :  std::pair<_T1, _T2>(__idx, __val), index(_T1_ref_t(this->first)), value(_T2_ref_t(this->second))    { }
 
         typename std::pair<_T1, _T2>::first_type&   index;
         typename std::pair<_T1, _T2>::second_type&  value;

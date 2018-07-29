@@ -87,6 +87,8 @@ namespace dts {
         is_type() { void(*ptr)(_Tp1, _Tp2) = constraints; (void)ptr; }
     };
 
+    // @note currently broken.
+    // @todo fix.
 #if 0
     /**
       * @brief dts_BUILD_GET_TYPE() : creates get_tuple method for simple enumeration
