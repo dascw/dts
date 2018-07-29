@@ -16,13 +16,22 @@ TEST(UtilityTests, array_size) {
     auto result = dts::array_size(test_array);
     EXPECT_EQ(result, 15);
 
-    // Dynamic (stack) array test
+    // stack allocated array test
     int array[50] = {0};
     result = dts::array_size(array);
+    EXPECT_EQ(result, 50);
 }
 
 TEST(UtilityTests, to_idx) {
-    EXPECT_EQ(false, true);
+    enum class test_enum : uint8_t {
+        one,
+        two,
+        four = 4
+    };
+
+    EXPECT_EQ(0, dts::to_idx(test_enum::one));
+    EXPECT_EQ(1, dts::to_idx(test_enum::two));
+    EXPECT_EQ(4, dts::to_idx(test_enum::four));
 }
 
 
