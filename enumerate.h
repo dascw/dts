@@ -1,18 +1,32 @@
-/**
-  @todo add details on the enumeration method.
-  @todo list caveats of use (e.g. inefficient resizing of vectors etc.)
-  @todo add details on how to use.
-  @todo add details on supported container classes.
-**/
 #ifndef DTS_ENUMERATE_H
 #define DTS_ENUMERATE_H
-
+/**
+ * @defgroup dts enumerate
+ *
+ * Provides an experimental version of Python's enumerate in range functionality. 
+ * @example
+ *      for (auto& a : dts::enumerate(std::vector<uint8_t>(5, 0xDE))) {
+ *           // a.index contains current point inside vector.
+ *           // a.value contains rvalue reference to current point.
+ *      }
+ * @details the underlying mechanism in Python's enumerate method is its tuple return
+ * capability. In C++, this can be emulated through both std::tuple and std::pair. 
+ * For the enumerate method, only two return values are required, index and value at index. 
+ * 
+ * enum_pair class is used to provide more description that  .first / .second.
+ * 
+ * @caveats effiency: current implementation is inefficient due to vector resizing. 
+ *          overheads: this isn't intended to be used for large vector objects, as results,
+ *                  in additional memory allocations for vector<pair> objects.
+ *
+ * @supported containers: tested with {map, forward_list, vector}.
+**/
 #include <utility>
-#include <functional>  // required  for std::ref
+#include <functional>  
 #include <vector>
-#include <stdint.h>
 #include <algorithm>
 #include <typeinfo>
+#include <stdint.h>
 
 namespace dts {
     // @note unable to access members of enum_pair through forward deduction  when creating object of type enum_pair,
@@ -42,10 +56,8 @@ namespace dts {
         ~enum_pair() = default;
     };
 
-
     /**
      * @brief enumerate() : returns immutable rvalue object.
-     * 
      * @tparam _Tp 
      * @param obj 
      * @return const std::vector<enum_pair<int, _Tp>> 
@@ -66,7 +78,6 @@ namespace dts {
 
     /**
      * @brief enumerate() : returns lvalue object containing references to vector object members.
-     * 
      * @tparam _Tp 
      * @param obj 
      * @return const std::vector<enum_pair<int, std::reference_wrapper<_Tp>>> 
@@ -109,7 +120,6 @@ namespace dts {
         std::for_each(__first, __last, [&](_Tp& val)->void {
             ret_val.push_back(enum_pair<enum_type::index_t, enum_type::_ref<_Tp>>(index++, std::ref(val)));
         });
-
         return ret_val;
     } 
 }

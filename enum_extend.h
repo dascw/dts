@@ -1,13 +1,26 @@
 // enum_extend.h
 #ifndef ENUM_EXTEND_H
 #define ENUM_EXTEND_H
-
-#include "../def_gen.hpp"
+/**
+ * @defgroup utilities Utilities
+ *
+ * Components deemed generally useful. Includes pair, tuple,
+ * forward/move helpers, ratio, function object, metaprogramming and
+ * type traits, time, date, and memory functions.
+ *
+ * @todo add details on the enumeration method.
+ * @todo list caveats of use (e.g. inefficient resizing of vectors etc.)
+ * @todo add details on how to use.
+ * @todo add details 
+**/
+#include "base_macro.h"
 
 /**
   * @brief provides weak comparison ability but retains
   * strong typing functionality desired of enum class.
   * @note implicitly declares namespace __enum.
+  * 
+  * @note DOES NOT ALLOW ASSIGNMENT WITHOUT CAST.
 */
 #define __ENUM_OPERATOR_OVERLOAD(__enum_type, __enum_base) \
     __ENUM_PREFIX_INCREMENT(__enum_type, __enum_base) \
@@ -54,4 +67,4 @@
 #endif
   // ENUM_EXTEND_H
 
-/************************ end of file ********************************/
+/************************************end of file************************************/
