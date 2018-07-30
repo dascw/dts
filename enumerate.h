@@ -68,6 +68,7 @@ namespace dts {
         using _Tp = typename _Container::value_type;
 
         std::vector<enum_pair<enum_type::index_t, _Tp>> ret_val; // resize only once
+        ret_val.reserve(std::distance(__obj.begin(), __obj.end()));
         enum_type::index_t index = 0;
 
         for (auto it = __obj.begin(); it != __obj.end(); ++it)
@@ -88,6 +89,7 @@ namespace dts {
         using _Tp = typename _Container::value_type;
 
         std::vector<enum_pair<enum_type::index_t, enum_type::_ref<_Tp>>> ret_val;
+        ret_val.reserve(std::distance(__obj.begin(), __obj.end()));
         enum_type::index_t index = 0;
 
         std::for_each(__obj.begin(), __obj.end(), [&](_Tp& val)->void {
@@ -116,6 +118,7 @@ namespace dts {
 
         std::vector<enum_pair<enum_type::index_t, enum_type::_ref<_Tp>>> ret_val;
         enum_type::index_t index = std::distance(__obj.begin(), __first);
+        ret_val.reserve(std::distance(__obj.begin(), __obj.end()));
 
         std::for_each(__first, __last, [&](_Tp& val)->void {
             ret_val.push_back(enum_pair<enum_type::index_t, enum_type::_ref<_Tp>>(index++, std::ref(val)));
