@@ -1,7 +1,7 @@
 // enum extend tests.cpp
 #include <stdint.h>
 #include "gtest/gtest.h"
-#include "enum_extend.h"
+#include "dts/enum_extend.h"
 
 enum class test_enum : uint32_t {
     one,
@@ -75,6 +75,5 @@ TEST(EnumExtendTest, not_extended) {
 //    val++; // postfix increment does not work for classes not overloaded.
     EXPECT_TRUE(true);
 }
-
 
 /************************************end of file************************************/

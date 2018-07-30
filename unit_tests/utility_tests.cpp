@@ -6,7 +6,7 @@
 #include <tuple>
 #include "gtest/gtest.h"
 
-#include "utilities.h"
+#include "dts/utilities.h"
 
 /**
  * @brief Construct a new TEST object
@@ -67,45 +67,17 @@ TEST(UtilityTests, uni_access) {
     EXPECT_EQ(5, test_vec[3]);
 }
 
-template <typename _Enum, typename _Tuple>
-decltype(auto)
-get_tuple(_Tuple &&__tuple, _Enum key) {
-    return std::get<static_cast<std::underlying_type_t<_Enum>>(key)>(__tuple);
-}
-
-
-enum class test_enum : uint8_t {
-    name,
-    value_one,
-    value_two
-};
-
-namespace dts {
-
-    /**
-     * @brief should privde on the fly access to tuples through meaningful
-     * name (enum created locally if required).
-     * @details provides simple container creation/access; reduces use of
-     * wrapper classes; more pythonic.
-     */
-    template <typename _Enum, typename _Tuple>
-    decltype(auto)
-    get(_Tuple & __tuple, const _Enum& __key) {
-        auto val = std::as_const(__key); // cast to const?
-        // @note issue is with key not being constant expression?
-        return std::get<static_cast<uint8_t>(test_enum::name)>(__tuple);
-    }
-}
-
-TEST(UtilityTests, get_tuple) {
+TEST(UtilityTests, utype_tuple) {
+    enum class test_enum : uint8_t {
+        name,
+        value_one,
+        value_two
+    };
 
     auto test_tuple = std::make_tuple("Test", 1, 5.5);
+    auto val = std::get<dts::utype(test_enum::name)>(test_tuple);
 
-    // @note we're attempting to create a template version of this operation.
-    auto result_dts = dts::get(test_tuple, test_enum::name);
-    auto result_std = std::get<static_cast<uint8_t>(test_enum::name)>(test_tuple);
-
-    EXPECT_EQ(false, true);
+    EXPECT_EQ(val, "Test");
 }
 
 /************************************end of file************************************/

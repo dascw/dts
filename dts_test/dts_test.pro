@@ -55,6 +55,8 @@ else:unix: LIBS += -L$$PWD/../ -lgtest
 
 INCLUDEPATH += $$PWD/../
 DEPENDPATH += $$PWD/../
+INCLUDEPATH += $$PWD/../../
+
 
 INCLUDEPATH += $$PWD/../googletest/googletest/include/
 

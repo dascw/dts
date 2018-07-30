@@ -1,18 +1,18 @@
 #ifndef DTS_ENUM_EXTEND_H
 #define DTS_ENUM_EXTEND_H
+#include "dts/license.h"
 /**
- * @defgroup utilities Utilities
+ * @defgroup dts enum_extend
  *
- * Components deemed generally useful. Includes pair, tuple,
- * forward/move helpers, ratio, function object, metaprogramming and
- * type traits, time, date, and memory functions.
- *
- * @todo add details on the enumeration method.
- * @todo list caveats of use (e.g. inefficient resizing of vectors etc.)
- * @todo add details on how to use.
- * @todo add details 
+ * @brief Provides overloading for strongly typed enumerations through macros.
+ * @details
+ *      class enum [typename] : [base} { [members...] };
+ *      __ENUM_OPERATOR_OVERLOAD([typename]);
+ * ...
+ *      [typename]++; // compiler's alright.
+ * @note individual overloads are available through relevant macros.
 **/
-#include "base_macro.h"
+#include "dts/base_macro.h"
 
 /**
   * @brief provides weak comparison ability but retains

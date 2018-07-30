@@ -13,6 +13,7 @@
   * cannot be correctly wrapped in a do {} while() loop due to lack of scope.
   */
 #define dts_EAT_SEMICOLON() struct sc_required
+#define dts_CPP_11 201103L
 
 #endif 
     // DTS_GEN_H

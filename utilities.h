@@ -1,15 +1,11 @@
 #ifndef DTS_UTILITIES_H
 #define DTS_UTILITIES_H
+#include "dts/license.h" // see for license details
 /**
  * @defgroup dts utilities
  *
  * Components deemend generally useful for everyday programming.
  *
- * @todo add licesne to each header.
- * @todo add details on the enumeration method.
- * @todo list caveats of use (e.g. inefficient resizing of vectors etc.)
- * @todo add details on how to use.
- * @todo add details 
 **/
 #include <utility>
 #include <functional>  // required  for std::ref
@@ -17,7 +13,7 @@
 #include <stdint.h>
 #include <algorithm>
 #include <typeinfo>
-#include "base_macro.h"
+#include "dts/base_macro.h"
 
 namespace dts {
     /**
@@ -86,23 +82,34 @@ namespace dts {
         is_type() { void(*ptr)(_Tp1, _Tp2) = constraints; (void)ptr; }
     };
 
-#if 0 // __cplusplus >= 201703L
-#warning "built"
+#if __cplusplus >= dts_CPP_11
     /**
-      * @brief dts_BUILD_GET_TYPE() : creates get_tuple method for simple enumeration
-      * access of tuple members (removes requirement to constantly cast to accessable
-      * value.
-      * @details to use:
-      *     1. add dts_BUILD_GET_TUPLE(enum_class) below your enum declaration.
-      *     2. const auto& val = get_tuple<enum_class::enum_member>(tuple_object);
-      */
-    #define dts_BUILD_GET_TUPLE(_Enum_t) \
-        template <_Enum_t key, typename _Tuple> \
-        decltype(auto) 
-        get_tuple(_Tuple &&__tuple) { \
-            return std::get<static_cast<std::underlying_type_t<_Enum_t>>(key)>(__tuple); \
-        } dts_EAT_SEMICOLON() 
+     * @brief returns underlying type of enuemration.
+     */
+    template<typename _Enum>
+    constexpr auto
+    utype(_Enum __enum) noexcept {
+        return static_cast<std::underlying_type_t<_Enum>>(__enum);
+    }
 #endif
+
+    /**
+     * @brief should privde on the fly access to tuples through meaningful
+     * name (enum created locally if required).
+     * @details provides simple container creation/access; reduces use of
+     * wrapper classes; more pythonic.
+     * @note currently doesn't work due to const expr restrictions; could potentially
+     * work with macro handling.
+     * @todo look at deriving from tuple class, creating custom class with
+     * accessible members.
+     */
+#if 0
+    template <typename _Tuple, typename _Enum>
+    decltype(auto)
+    get(_Tuple& __tuple, const _Enum& __key) {
+        // code..
+    }
+#endif // 0
 } 
 
 #endif 

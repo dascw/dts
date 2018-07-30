@@ -1,9 +1,9 @@
 #ifndef DTS_ENUMERATE_H
 #define DTS_ENUMERATE_H
+#include "dts/license.h"
 /**
  * @defgroup dts enumerate
- *
- * Provides an experimental version of Python's enumerate in range functionality. 
+ * @brief Provides an experimental version of Python's enumerate in range functionality.
  * @example
  *      for (auto& a : dts::enumerate(std::vector<uint8_t>(5, 0xDE))) {
  *           // a.index contains current point inside vector.
