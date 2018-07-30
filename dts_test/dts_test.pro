@@ -1,9 +1,9 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
-QMAKE_CXXFLAGS += -pthread
+QMAKE_CXXFLAGS += -pthread -std=c++17
 LIBS += -pthread
 
 SOURCES += \
@@ -42,7 +42,8 @@ HEADERS += \
     ../googletest/googletest/include/gtest/gtest-typed-test.h \
     ../googletest/googletest/include/gtest/gtest.h \
     ../googletest/googletest/include/gtest/gtest_pred_impl.h \
-    ../googletest/googletest/include/gtest/gtest_prod.h
+    ../googletest/googletest/include/gtest/gtest_prod.h \
+    ../utilities.h
 
 DISTFILES += \
     ../googletest/googletest/include/gtest/internal/gtest-param-util-generated.h.pump \

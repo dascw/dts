@@ -1,24 +1,23 @@
 #ifndef DTS_UTILITIES_H
 #define DTS_UTILITIES_H
 /**
- * @defgroup utilities Utilities
+ * @defgroup dts utilities
  *
- * Components deemed generally useful. Includes pair, tuple,
- * forward/move helpers, ratio, function object, metaprogramming and
- * type traits, time, date, and memory functions.
+ * Components deemend generally useful for everyday programming.
  *
+ * @todo add licesne to each header.
  * @todo add details on the enumeration method.
  * @todo list caveats of use (e.g. inefficient resizing of vectors etc.)
  * @todo add details on how to use.
  * @todo add details 
 **/
-
 #include <utility>
 #include <functional>  // required  for std::ref
 #include <vector>
 #include <stdint.h>
 #include <algorithm>
 #include <typeinfo>
+#include "base_macro.h"
 
 namespace dts {
     /**
@@ -87,9 +86,8 @@ namespace dts {
         is_type() { void(*ptr)(_Tp1, _Tp2) = constraints; (void)ptr; }
     };
 
-    // @note currently broken.
-    // @todo fix.
-#if 0
+#if 0 // __cplusplus >= 201703L
+#warning "built"
     /**
       * @brief dts_BUILD_GET_TYPE() : creates get_tuple method for simple enumeration
       * access of tuple members (removes requirement to constantly cast to accessable
@@ -104,7 +102,7 @@ namespace dts {
         get_tuple(_Tuple &&__tuple) { \
             return std::get<static_cast<std::underlying_type_t<_Enum_t>>(key)>(__tuple); \
         } dts_EAT_SEMICOLON() 
-#endif // 0
+#endif
 } 
 
 #endif 

@@ -1,6 +1,5 @@
-// enum_extend.h
-#ifndef ENUM_EXTEND_H
-#define ENUM_EXTEND_H
+#ifndef DTS_ENUM_EXTEND_H
+#define DTS_ENUM_EXTEND_H
 /**
  * @defgroup utilities Utilities
  *
@@ -78,6 +77,6 @@
     } \
 
 #endif
-  // ENUM_EXTEND_H
+  // DTS_ENUM_EXTEND_H
 
 /************************************end of file************************************/
