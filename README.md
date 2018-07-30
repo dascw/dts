@@ -22,6 +22,6 @@ For examples for each module, refer to the header comments and relevant unit tes
 
 ### 0.2a
 
-Added dts::enumerate - based on Python's for in range enumerate method.
+Added `dts::enumerate()` - based on Python's for in range enumerate method.
 
 -----------------------------------------------------------------------------------------------------------
