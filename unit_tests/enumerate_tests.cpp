@@ -7,7 +7,7 @@
 #include "base_macro.h"
 #include "enumerate.h"
 
-/// macro for basic testing of enumeration members.
+///! macro for basic testing of enumeration members.
 #define ENUMERATE_TEST_BASIC(arg, ENUMERATE, idx_init) \
     int index = idx_init; \
     for (auto& a : ENUMERATE) { \

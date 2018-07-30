@@ -9,7 +9,8 @@ LIBS += -pthread
 SOURCES += \
         main.cpp \
     ../unit_tests/enumerate_tests.cpp \
-    ../unit_tests/utility_tests.cpp
+    ../unit_tests/utility_tests.cpp \
+    ../unit_tests/enum_extend_tests.cpp
 
 HEADERS += \
     ../base_macro.h \
