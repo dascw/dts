@@ -4,7 +4,7 @@ A bundle of frequently used tricks in C++, enjoyable code snippets found in book
 
 ## Why 'dts'? 
 
-This was originally named 'def', for 'default engineer functionality'. As I wanted it to reflect the functionality and design aspects to the STL and members of the std:: namespace, I thought `dts::` (`std` backwards) would be a better choice. I noticed after the fact that this also stands for 'Developer ToolSet'.
+This was originally named **'def'**, for **'default engineer functionality'**. As I wanted it to reflect the functionality and design aspects to the STL and members of the std:: namespace, I thought `dts::` (`std::` backwards) would be a better choice. I noticed after the fact that this also stands for 'Developer ToolSet'.
 
 ## Features
 
