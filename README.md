@@ -8,7 +8,7 @@ This was originally named **'def'**, for **'default engineer functionality'**. A
 
 ## Examples
 
-For examples for each module, refer to the header comments and relevant unit test. 
+For examples of each module, refer to the header comments and relevant unit test. 
 
 ## Requirements
 
