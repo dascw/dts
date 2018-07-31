@@ -20,7 +20,7 @@ namespace dts {
      * @brief returns universal reference to container at requested index, type
      * deduced.
      */
-    template<typename _Container, typename _Index>
+    template <typename _Container, typename _Index>
     inline auto 
     uni_access(_Container&& __cntr, _Index __idx) -> 
             decltype(std::forward<_Container>(__cntr)[__idx]) {
@@ -45,7 +45,7 @@ namespace dts {
      * 
      * @todo Read through example for tuple access with scoped enumeration.
      */
-    template<typename _Enum>
+    template <typename _Enum>
     constexpr typename std::underlying_type<_Enum>::type
     to_idx(_Enum __enum) noexcept {
         return static_cast<typename std::underlying_type<_Enum>::type>(__enum);
@@ -63,7 +63,7 @@ namespace dts {
      * @note it's obvious when casting directly that this has the potential to crash a system, 
      *       and should not be carried out.
      */
-    template<class _Tp>
+    template <class _Tp>
     inline void
     destroy(_Tp*& __p) { delete __p; __p = nullptr; }
 
@@ -86,7 +86,7 @@ namespace dts {
     /**
      * @brief returns underlying type of enuemration.
      */
-    template<typename _Enum>
+    template <typename _Enum>
     constexpr auto
     utype(_Enum __enum) noexcept {
         return static_cast<std::underlying_type_t<_Enum>>(__enum);
