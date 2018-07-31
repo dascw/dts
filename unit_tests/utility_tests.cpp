@@ -8,9 +8,6 @@
 
 #include "dts/utilities.h"
 
-/**
- * @brief Construct a new TEST object
- */
 TEST(UtilityTests, array_size) {
     // Const array test
     const uint8_t test_array[15] = {0};    
@@ -23,10 +20,6 @@ TEST(UtilityTests, array_size) {
     EXPECT_EQ(result, 50);
 }
 
-/**
- * @brief Construct a new TEST object
- * 
- */
 TEST(UtilityTests, to_idx) {
     enum class test_enum : uint8_t {
         one,
@@ -45,20 +38,12 @@ TEST(UtilityTests, to_idx) {
     }
 }
 
-/**
- * @brief Construct a new TEST object
- * 
- */
 TEST(UtilityTests, destroy) {
     int * p = new int(10);
     dts::destroy(p);
     EXPECT_EQ(p, nullptr);
 }
 
-/**
- * @brief Construct a new TEST object
- * 
- */
 TEST(UtilityTests, uni_access) {
     std::vector<uint8_t> test_vec = {5, 3, 2, 1,};
     auto& access = dts::uni_access(test_vec, 3);
