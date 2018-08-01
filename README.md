@@ -13,6 +13,7 @@ For examples of each module, refer to the header comments and relevant unit test
 ## Requirements
 
 - C++11 (C++17 for all functionality).
+- `googletest` framework for unit testing. Details for your system can be found [here](https://github.com/google/googletest).
 
 ## Known Issues
 
