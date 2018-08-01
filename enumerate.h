@@ -50,7 +50,7 @@ namespace dts {
 
         enum_pair() = delete;
         enum_pair(enum_pair<_T1, _T2>&& __in) 
-            : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second) { }
+            : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>&&>(__in)), index(this->first), value(this->second) { }
         enum_pair(const enum_pair<_T1, _T2>& __in)  
             : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second) { }
         enum_pair(_T1 __idx, _T2 __val)  
