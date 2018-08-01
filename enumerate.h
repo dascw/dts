@@ -45,11 +45,13 @@ namespace dts {
         using _T1_ref_t     = enum_type::_ref<_T1_t>;
         using _T2_ref_t     = enum_type::_ref<_T2_t>;
 
-        // @todo implement - copy ctors
-//        enum_pair(enum_pair<_T1, _T2>&& __in) {}
         enum_pair() = delete;
-        enum_pair(const enum_pair<_T1, _T2>& __in)  : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second)      { }
-        enum_pair(_T1 __idx, _T2 __val)  :  std::pair<_T1, _T2>(__idx, __val), index(_T1_ref_t(this->first)), value(_T2_ref_t(this->second))    { }
+        enum_pair(enum_pair<_T1, _T2>&& __in) 
+            : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second) { }
+        enum_pair(const enum_pair<_T1, _T2>& __in)  
+            : std::pair<_T1, _T2>(static_cast<std::pair<_T1, _T2>>(__in)), index(this->first), value(this->second) { }
+        enum_pair(_T1 __idx, _T2 __val)  
+            : std::pair<_T1, _T2>(__idx, __val), index(_T1_ref_t(this->first)), value(_T2_ref_t(this->second)) { }
 
         typename std::pair<_T1, _T2>::first_type&   index;
         typename std::pair<_T1, _T2>::second_type&  value;
