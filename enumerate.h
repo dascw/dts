@@ -1,9 +1,9 @@
-#ifndef DTS_ENUMERATE_H
-#define DTS_ENUMERATE_H
-#include "dts/license.h"
 /**
- * @defgroup dts enumerate
  * @brief Provides an experimental version of Python's enumerate in range functionality.
+ * 
+ * @file enumerate.h
+ * @defgroup dts enumerate
+ * @author SCW
  * @example
  *      for (auto& a : dts::enumerate(std::vector<uint8_t>(5, 0xDE))) {
  *           // a.index contains current point inside vector.
@@ -20,13 +20,16 @@
  *                  in additional memory allocations for vector<pair> objects.
  *
  * @supported containers: tested with {map, forward_list, vector}.
-**/
+ */
+#ifndef DTS_ENUMERATE_H
+#define DTS_ENUMERATE_H
 #include <utility>
 #include <functional>  
 #include <vector>
 #include <algorithm>
 #include <typeinfo>
 #include <stdint.h>
+#include "dts/license.h"
 
 namespace dts {
     // @note unable to access members of enum_pair through forward deduction  when creating object of type enum_pair,

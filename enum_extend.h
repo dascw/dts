@@ -1,10 +1,10 @@
-#ifndef DTS_ENUM_EXTEND_H
-#define DTS_ENUM_EXTEND_H
-#include "dts/license.h"
 /**
- * @defgroup dts enum_extend
- *
  * @brief Provides overloading for strongly typed enumerations through macros.
+ *  
+ * @file enum_extend.h
+ * defgroup dts enum_extend
+ * @author SCW
+ * 
  * @details
  *      class enum [typename] : [base} { [members...] };
  *      __ENUM_OPERATOR_OVERLOAD([typename]);
@@ -12,6 +12,9 @@
  *      [typename]++; // compiler's alright.
  * @note individual overloads are available through relevant macros.
 **/
+#ifndef DTS_ENUM_EXTEND_H
+#define DTS_ENUM_EXTEND_H
+#include "dts/license.h"
 #include "dts/base_macro.h"
 
 /**

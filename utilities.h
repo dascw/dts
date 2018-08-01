@@ -1,18 +1,18 @@
+/**
+ * @brief components deemend generally useful for everyday programming.
+ * @defgroup dts utilitie3s
+ * @file utilities.h
+ * @author SCW
+ */
 #ifndef DTS_UTILITIES_H
 #define DTS_UTILITIES_H
-#include "dts/license.h" // see for license details
-/**
- * @defgroup dts utilities
- *
- * Components deemend generally useful for everyday programming.
- *
-**/
 #include <utility>
 #include <functional>  // required  for std::ref
 #include <vector>
 #include <stdint.h>
 #include <algorithm>
 #include <typeinfo>
+#include "dts/license.h" 
 #include "dts/base_macro.h"
 
 namespace dts {
