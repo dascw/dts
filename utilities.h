@@ -82,7 +82,7 @@ namespace dts {
         is_type() { void(*ptr)(_Tp1, _Tp2) = constraints; (void)ptr; }
     };
 
-#if __cplusplus >= dts_CPP_11
+#if __cplusplus > dts_CPP_11
     /**
      * @brief returns underlying type of enuemration.
      */

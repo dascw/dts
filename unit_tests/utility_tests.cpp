@@ -52,6 +52,7 @@ TEST(UtilityTests, uni_access) {
     EXPECT_EQ(5, test_vec[3]);
 }
 
+#if __cplusplus > dts_CPP_11
 TEST(UtilityTests, utype_tuple) {
     enum class test_enum : uint8_t {
         name,
@@ -64,5 +65,5 @@ TEST(UtilityTests, utype_tuple) {
 
     EXPECT_EQ(val, "Test");
 }
-
+#endif // C11
 /************************************end of file************************************/
